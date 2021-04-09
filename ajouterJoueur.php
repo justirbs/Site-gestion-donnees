@@ -1,7 +1,6 @@
 <html>
 <head>
 	<title>Ajouter Joueur</title>
-	<link rel="stylesheet" type="text/css" href="css/ajouterJoueur.css" />
 	<meta charset="utf-8">
 </head>
 <body>

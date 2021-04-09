@@ -5,6 +5,12 @@
     <meta charset="utf-8">
 </head>
 <body>
+  <form method='post' action='enregistrerStatistiques.php'>
+    <div id="formulaire">
+      <p>Veuillez remplir les statistiques du joueur séléctionné</p>
+      <p>Nombre de Buts : <input type='text' name='buts'/></p>
+      <p>Temps de jeu : <input type='text' name='temps'/></p>
+    </div>
 
   <?php
   /*Fonction pour récupérer les nom et prénom du joueur dans le infoJoueurs.csv*/
@@ -27,12 +33,18 @@
 
   $tabJoueurs = construireTabJoueurs();
 
-  echo("<form><select id='listeJoueurs' size='10'>");
+  echo("
+  <div id='listeJoueurs'>
+  <select size='5' name='joueur'>");
   foreach ($tabJoueurs as $nom => $prenom) {
-    echo("<option id=".$nom." onclick='selectionJoueur(this)'>".$nom.$prenom."</option>");
+    echo("<option value='".$nom.$prenom."'>".$nom.$prenom."</option>");
   }
-  echo("</select></form>");
+
   ?>
+      </select>
+    </div>
+    <p><input type='submit' value='Valider' class='btn'/></p>
+  </form>
 
   <script type="text/javascript" src="js/ajouterStatistiques.js"></script>
 </body>
