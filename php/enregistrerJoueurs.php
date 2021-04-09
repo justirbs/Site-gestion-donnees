@@ -9,7 +9,7 @@
 
   <?php
     //on ouvre le csv et on rentre les informations à l'intérieur
-    $fp = fopen('./csv/infoJoueurs.csv', 'a+');
+    $fp = fopen('../csv/infoJoueurs.csv', 'a+');
     fputcsv($fp, $_POST,";");
     fclose($fp);
 
@@ -17,7 +17,7 @@
 	  function construireTabJoueurs(){
 	    $row = 1;
 	    $tabJoueurs = array();
-	    if (($handle = fopen("csv/infoJoueurs.csv", "r")) !== FALSE) {
+	    if (($handle = fopen("../csv/infoJoueurs.csv", "r")) !== FALSE) {
 	      while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 	        $num = count($data);
 	        for ($c=0; $c < $num; $c++) {

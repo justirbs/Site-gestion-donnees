@@ -8,7 +8,7 @@
   <?php
   //ajout des statistiquesdans NomPrenom.csv
   $nomCsv = $_POST["joueur"].".csv";
-  $fp = fopen("./csv/".$nomCsv, 'a+');
+  $fp = fopen("../csv/".$nomCsv, 'a+');
   $array = array($_POST["buts"], $_POST["temps"]);
   fputcsv($fp, $array, ";");
   fclose($fp);
