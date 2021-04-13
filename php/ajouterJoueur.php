@@ -2,6 +2,7 @@
 <head>
 	<title>Ajouter Joueur</title>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="../css/designGlobal.css" />
 </head>
 <body>
 

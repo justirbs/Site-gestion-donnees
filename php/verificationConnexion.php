@@ -56,7 +56,7 @@
     if(trouverProfil() == "entraineur"){
       header('Location: profilEntraineur.php');
     } else {
-      header('Location: rechercherDesStatistiques.php');
+      header('Location: profilJoueur.php');
     }
   } else {
     header('Location: connexion.php?erreur=erreur');

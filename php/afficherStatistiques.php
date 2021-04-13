@@ -29,7 +29,7 @@
   if(file_exists($nomCsv)){
     echo("<h4>Les statistiques du joueur ".$_POST["nom"]." ".$_POST["prenom"]." sont les suivantes :</h4>");
     $tabStat = construireTabStat($nomCsv);
-    echo("<table border=1><tr><th>Nombre de buts</th><th>Temps de jeu</th></tr>");
+    echo("<table><tr><th>Nombre de buts</th><th>Temps de jeu</th></tr>");
     foreach ($tabStat as $match) {
       echo("<tr>");
       foreach ($match as $stat) {

@@ -3,11 +3,16 @@
 <head>
     <title>Ajouter statistiques</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../css/designGlobal.css" />
 </head>
 <body>
-  <form method='post' action='enregistrerStatistiques.php'>
+
+  <div class="titre">
+    <h1>Ajouter des statistiques</h1>
+  </div>
+
+  <form method='post' action='enregistrerStatistiques.php' class="formulaire">
     <div id="formulaire">
-      <p>Veuillez remplir les statistiques du joueur séléctionné</p>
       <p>Nombre de Buts : <input type='text' name='buts'/></p>
       <p>Temps de jeu : <input type='text' name='temps'/></p>
     </div>
