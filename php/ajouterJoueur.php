@@ -6,9 +6,11 @@
 </head>
 <body>
 
-  <h1>Ajouter un joueur</h1>
+	<div class="titre">
+		<h1>Ajouter un joueur</h1>
+	</div>
 
-  <form id="formulaire" method="post" action="enregistrerJoueurs.php">
+  <form id="formulaire" method="post" action="enregistrerJoueurs.php" class="formulaire">
     <p>Nom : <input type="text" id="nom" name="nom"/></p>
     <p>Prénom : <input type="text" id="prenom" name="prenom"/></p>
     <p>Date de naissance : <input type="date" id="date" name="date"/></p>
