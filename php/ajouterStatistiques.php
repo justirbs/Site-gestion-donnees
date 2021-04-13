@@ -7,6 +7,15 @@
 </head>
 <body>
 
+  <div id="navbar" class="navbar">
+		<ul>
+		  <li><a href="profilEntraineur.php">Profil</a></li>
+		  <li><a href="gererJoueurs.php">Gérer les joueurs</a></li>
+		  <li><a class="active" href="gererStatistiques.php">Gérer les statistiques</a></li>
+		  <li style="float:right"><a href="../index.html">Déconexion</a></li>
+		</ul>
+	</div>
+
   <div class="titre">
     <h1>Ajouter des statistiques</h1>
   </div>
@@ -14,7 +23,7 @@
   <form method='post' action='enregistrerStatistiques.php' class="formulaire">
     <div id="formulaire">
       <p>Nombre de Buts : <input type='text' name='buts'/></p>
-      <p>Temps de jeu : <input type='text' name='temps'/></p>
+      <p>Temps de jeu (en min) : <input type='text' name='temps'/></p>
     </div>
 
   <?php

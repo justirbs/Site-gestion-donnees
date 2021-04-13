@@ -6,21 +6,34 @@
 </head>
 <body>
 
-  <?php
-  //ajout des statistiquesdans NomPrenom.csv
-  $nomCsv = $_POST["joueur"].".csv";
-  $fp = fopen("../csv/".$nomCsv, 'a+');
-  $array = array($_POST["buts"], $_POST["temps"]);
-  fputcsv($fp, $array, ";");
-  fclose($fp);
+	<div id="navbar" class="navbar">
+		<ul>
+		  <li><a href="profilEntraineur.php">Profil</a></li>
+		  <li><a href="gererJoueurs.php">Gérer les joueurs</a></li>
+		  <li><a class="active" href="gererStatistiques.php">Gérer les statistiques</a></li>
+		  <li style="float:right"><a href="../index.html">Déconexion</a></li>
+		</ul>
+	</div>
 
-  //affichage des statistiques
-  echo("<h4>Les statistiques suivantes viennent d'être sauvegardées :</h4>");
-  echo("<table border=1><tr><th>Joueur</th><th>Nombre de buts</th><th>Temps de jeu</th></tr>");
-  echo("<tr><td>". $_POST["joueur"] ."</td><td>". $_POST["buts"] ."</td><td>". $_POST["temps"] ."</td></tr>");
-  echo("</table><br/>");
+	<div class="affichage">
 
-  ?>
-  <a href="ajouterStatistiques.php">Revenir à la page précédente</a>
+	  <?php
+	  //ajout des statistiquesdans NomPrenom.csv
+	  $nomCsv = $_POST["joueur"].".csv";
+	  $fp = fopen("../csv/".$nomCsv, 'a+');
+	  $array = array($_POST["buts"], $_POST["temps"]);
+	  fputcsv($fp, $array, ";");
+	  fclose($fp);
+
+	  //affichage des statistiques
+	  echo("<h4>Les statistiques suivantes viennent d'être sauvegardées :</h4>");
+	  echo("<table border=1><tr><th>Joueur</th><th>Nombre de buts</th><th>Temps de jeu (min)</th></tr>");
+	  echo("<tr><td>". $_POST["joueur"] ."</td><td>". $_POST["buts"] ."</td><td>". $_POST["temps"] ."</td></tr>");
+	  echo("</table><br/>");
+
+	  ?>
+	  <a href="ajouterStatistiques.php">Revenir à la page précédente</a>
+
+	</div>
 
 </body>

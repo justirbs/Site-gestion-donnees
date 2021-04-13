@@ -6,6 +6,15 @@
 </head>
 <body>
 
+	<div id="navbar" class="navbar">
+		<ul>
+		  <li><a href="profilEntraineur.php">Profil</a></li>
+		  <li><a class="active" href="gererJoueurs.php">Gérer les joueurs</a></li>
+		  <li><a href="gererStatistiques.php">Gérer les statistiques</a></li>
+		  <li style="float:right"><a href="../index.html">Déconexion</a></li>
+		</ul>
+	</div>
+
   <div class="affichage">
 		<h4>Le joueur a bien été insrit !</h4>
 
@@ -51,7 +60,7 @@
 
 		  //on affiche les joueurs inscrits
 		  afficherTabJoueurs();
-
 	  ?>
+		<a href="ajouterJoueur.php">Revenir à la page précédente</a>
 	</div>
 </body>

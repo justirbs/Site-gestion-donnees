@@ -2,6 +2,10 @@ body{
   background-color: #00695c; /*Couleur de base*/
 }
 
+html, body {
+ margin:0;
+ padding:0;
+ }
 
 .titre{
   text-align: center;
@@ -93,4 +97,35 @@ th{
   padding: 8px;
   color: #003d33;
   background-color: rgba(236, 239, 241, 0.4);
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #003d33;
+}
+
+.navbar li{
+  float: left;
+}
+
+.navbar a {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+}
+
+.navbar a:hover{
+  background-color: #00190c;
+  color: #eceff1;
+}
+
+.active{
+  background-color: #00695c;
+}
+
+.navbar .active:hover{
+  background-color: #00695c;
 }

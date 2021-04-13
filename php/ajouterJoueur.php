@@ -6,6 +6,16 @@
 </head>
 <body>
 
+	<div id="navbar" class="navbar">
+		<ul>
+		  <li><a href="profilEntraineur.php">Profil</a></li>
+		  <li><a class="active" href="gererJoueurs.php">Gérer les joueurs</a></li>
+		  <li><a href="gererStatistiques.php">Gérer les statistiques</a></li>
+		  <li style="float:right"><a href="../index.html">Déconexion</a></li>
+		</ul>
+	</div>
+
+
 	<div class="titre">
 		<h1>Ajouter un joueur</h1>
 	</div>
