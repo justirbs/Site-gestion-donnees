@@ -14,10 +14,12 @@
 
   ?>
 
-	<h4>Le compte a bien été enregistré</h4>
+	<div class="affichage">
+		<h4>Le compte a bien été enregistré</h4>
+		<a href="./connexion.php">Revenir à la page précédente</a><br/>
+		<a href="../index.html">Revenir à l'accueil</a>
+	</div>
 
-	<a href="./connexion.php">Revenir à la page précédente</a><br/>
-	<a href="../index.html">Revenir à l'accueil</a>
 
 
 </body>

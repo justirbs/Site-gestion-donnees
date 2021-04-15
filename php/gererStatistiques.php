@@ -22,6 +22,7 @@
 	<div class="affichage">
 		<h4>Que voulez-vous faire ?</h4>
 		<a href="ajouterStatistiques.php">Ajouter des statistiques</a><br/>
+		<a href="rechercherDesStatistiques.php?profil=entraineur">Rechercher des statistiques</a>
 	</div>
 
 

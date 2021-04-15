@@ -6,13 +6,28 @@
 </head>
 <body>
 
-	<div id="navbar" class="navbar">
-		<ul>
-			<li><a href="profilJoueur.php">Profil</a></li>
-			<li><a class="active" href="rechercherDesStatistiques.php">Rechercher des statistiques</a></li>
-			<li style="float:right"><a href="../index.html">Déconexion</a></li>
-		</ul>
-	</div>
+	<?php
+		//pour la navbar on doit vérifier si on est sur un profil entraieur ou joueur
+		if($_GET["profil"]=="joueur"){
+			echo("<div id='navbar' class='navbar'>
+				<ul>
+					<li><a href='profilJoueur.php'>Profil</a></li>
+					<li><a class='active' href='rechercherDesStatistiques.php'>Rechercher des statistiques</a></li>
+					<li style='float:right'><a href='../index.html'>Déconexion</a></li>
+				</ul>
+			</div>");
+		} else {
+			echo("<div id='navbar' class='navbar'>
+				<ul>
+					<li><a href='profilEntraineur.php'>Profil</a></li>
+					<li><a href='gererJoueurs.php'>Gérer les joueurs</a></li>
+					<li><a class='active' href='gererStatistiques.php'>Gérer les statistiques</a></li>
+					<li style='float:right'><a href='../index.html'>Déconexion</a></li>
+				</ul>
+			</div>");
+		}
+	?>
+
 
 	<div class="titre">
 		<h1>Rechercher les statistiques du joueur :</h1>
