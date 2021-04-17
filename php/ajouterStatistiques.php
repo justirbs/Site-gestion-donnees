@@ -51,7 +51,7 @@
   <div id='listeJoueurs'>
   <select size='5' name='joueur'>");
   foreach ($tabJoueurs as $nom => $prenom) {
-    echo("<option value='".$nom.$prenom."'>".$nom.$prenom."</option>");
+    echo("<option value='".$nom.$prenom."'>".$nom." ".$prenom."</option>");
   }
 
   ?>

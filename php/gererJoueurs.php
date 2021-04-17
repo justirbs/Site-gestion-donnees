@@ -22,6 +22,7 @@
 	<div class="affichage">
 		<h4>Que voulez-vous faire ?</h4>
 	  <a href="ajouterJoueur.php">Ajouter un joueur</a><br/>
+		<a href="modifierJoueur.php">Modifier le profil d'un joueur</a><br/>
 	</div>
 
 
