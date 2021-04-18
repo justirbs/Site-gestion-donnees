@@ -4,6 +4,7 @@
     <title>Ajouter statistiques</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../css/designGlobal.css" />
+    <link rel="icon" type="image/png" href="../img/icon.png">
 </head>
 <body>
 

@@ -3,6 +3,7 @@
 	<title>Gérer joueurs</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="../css/designGlobal.css" />
+	<link rel="icon" type="image/png" href="../img/icon.png">
 </head>
 <body>
 
@@ -23,6 +24,7 @@
 		<h4>Que voulez-vous faire ?</h4>
 	  <a href="ajouterJoueur.php">Ajouter un joueur</a><br/>
 		<a href="modifierJoueur.php">Modifier le profil d'un joueur</a><br/>
+		<a href="supprimerJoueur.php">Supprimer un joueur</a><br/>
 	</div>
 
 

@@ -17,18 +17,16 @@
 	</div>
 
   <div class="affichage">
-		<h4>Le joueur a bien été modifié !</h4>
 
 	  <?php
 
-    /*Fonction pour modifier le fichier infoJoueurs.csv avec les nouvelles informations*/
+    /*Fonction pour supprimer le joueur dans le fichier infoJoueurs.csv*/
 
     function modifierFichier(){
       $row = 1;
-      $i = -1;
 
       $donneesCsv = array(); // le tableau dans le quel on va stocker toutes les donées présentes dans le csv
-      $joueur = explode(";", $_POST["joueur"]); // on récupère le nom et le prénom du joueur pour savoir quelle ligne modifier
+      $joueur = explode(";", $_POST["joueur"]); // on récupère le nom et le prénom du joueur pour savoir quelle ligne supprimer
 
       // on ouvre le fichier csv
       if (($handle = fopen("../csv/infoJoueurs.csv", "r")) !== FALSE) {
@@ -37,18 +35,10 @@
           for ($c=0; $c < $num; $c++) {
             // on récupère les données de chaque ligne
             $array = explode(";", $data[$c]);
-            // si on est à la ligne correspondant au joueur à modifier
-            if(($joueur[0] == $array[0]) && ($joueur[1] == $array[1])){
-              foreach ($_POST as $value) {
-                if($i != -1  &&  $value != ""){
-                  // on modifie les données à envoyer au nouveau fichier csv
-                  $array[$i] = $value;
-                }
-                $i ++;
-              }
-              $tabJoueur = $array;
+            // si on n'est pas à la ligne du joueur à supprimer, on conserve les données dans le tableau
+            if(($joueur[0] != $array[0]) || ($joueur[1] != $array[1])){
+              array_push($donneesCsv, array($array[0], $array[1], $array[2], $array[3], $array[4]));
             }
-            array_push($donneesCsv, array($array[0], $array[1], $array[2], $array[3], $array[4]));
           }
           $row++;
         }
@@ -64,20 +54,22 @@
       fclose($fp);
       rename("../csv/infoJoueurs2.csv", "../csv/infoJoueurs.csv");
 
-      return($tabJoueur);
     }
 
+    // on modifie le fichier csv
+    modifierFichier();
 
-    $tabJoueur = modifierFichier();
+    $joueur = explode(";", $_POST["joueur"]);
+    $nomCsv = "../csv/".$joueur[0].$joueur[1].".csv";
 
-    echo("<h4>Désormais, les données concernat le joueur sont :</h4>");
-    echo("<table border=1><tr><th>Nom</th><th>Prénom</th><th>Date de naissance</th><th>Poste</th><th>Club</th></tr><tr>");
-    foreach ($tabJoueur as $value) {
-      echo("<td>". $value ."</td>");
+    //si le joueur a ses statistiques stockées dans un fichier, il faut le supprimer
+    if(file_exists($nomCsv)){
+      unlink($nomCsv);
     }
-    echo("</tr></table><br/>");
+
+    echo("<h4>Le joueur ".$joueur[0]." ".$joueur[1]." a bien été supprimé !</h4>")
 
 	  ?>
-		<a href="modifierJoueur.php">Revenir à la page précédente</a>
+		<a href="supprimerJoueur.php">Revenir à la page précédente</a>
 	</div>
 </body>
