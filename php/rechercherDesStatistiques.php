@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html>
 <head>
 	<title>Rechercher des statistiques</title>
@@ -9,12 +12,12 @@
 
 	<?php
 		//pour la navbar on doit vérifier si on est sur un profil entraieur ou joueur
-		if($_GET["profil"]=="joueur"){
+		if($_SESSION["profil"]=="joueur"){
 			echo("<div id='navbar' class='navbar'>
 				<ul>
 					<li><a href='profilJoueur.php'>Profil</a></li>
 					<li><a class='active' href='rechercherDesStatistiques.php'>Rechercher des statistiques</a></li>
-					<li style='float:right'><a href='../index.html'>Déconexion</a></li>
+					<li style='float:right'><a href='./deconnexion.php?connexion=out'>Déconexion</a></li>
 				</ul>
 			</div>");
 		} else {
@@ -23,7 +26,7 @@
 					<li><a href='profilEntraineur.php'>Profil</a></li>
 					<li><a href='gererJoueurs.php'>Gérer les joueurs</a></li>
 					<li><a class='active' href='gererStatistiques.php'>Gérer les statistiques</a></li>
-					<li style='float:right'><a href='../index.html'>Déconexion</a></li>
+					<li style='float:right'><a href='./deconnexion.php?connexion=out'>Déconexion</a></li>
 				</ul>
 			</div>");
 		}

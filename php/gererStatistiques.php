@@ -12,7 +12,7 @@
 		  <li><a href="profilEntraineur.php">Profil</a></li>
 		  <li><a href="gererJoueurs.php">Gérer les joueurs</a></li>
 		  <li><a class="active" href="gererStatistiques.php">Gérer les statistiques</a></li>
-		  <li style="float:right"><a href="../index.html">Déconexion</a></li>
+		  <li style="float:right"><a href="./deconnexion.php?connexion=out">Déconexion</a></li>
 		</ul>
 	</div>
 
@@ -23,7 +23,7 @@
 	<div class="affichage">
 		<h4>Que voulez-vous faire ?</h4>
 		<a href="ajouterStatistiques.php">Ajouter des statistiques</a><br/>
-		<a href="rechercherDesStatistiques.php?profil=entraineur">Rechercher des statistiques</a>
+		<a href="rechercherDesStatistiques.php">Rechercher des statistiques</a>
 	</div>
 
 

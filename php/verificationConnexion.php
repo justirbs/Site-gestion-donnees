@@ -24,24 +24,27 @@
     return($tabIdentifiants);
   }
 
-  /*Fonction pour déterminer le profil de l'utilisateur*/
-  function trouverProfil(){
-    $row = 1;
-    if (($handle = fopen("../csv/identifiant.csv", "r")) !== FALSE) {
+
+	/*Fonction pour récupérer toutes les informations relatives à l'utilisateur connecté*/
+	function remplirInfoUtilisateur(){
+		session_start();
+		$row = 1;
+		if (($handle = fopen("../csv/identifiant.csv", "r")) !== FALSE) {
       while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
         $num = count($data);
         for ($c=0; $c < $num; $c++) {
           $array = explode(";", $data[$c]);
           if($array[0] == $_POST["pseudo"]  &&  $array[1] == $_POST["mdp"]){
-            $profil = $array[2];
+            $_SESSION["identifiant"] = $array[0];
+            $_SESSION["mdp"] = $array[1];
+						$_SESSION["profil"] = $array[2];
           }
         }
         $row++;
       }
       fclose($handle);
     }
-    return($profil);
-  }
+	}
 
 
   $estCorrect = 0;
@@ -53,7 +56,8 @@
   }
 
   if($estCorrect == 1){
-    if(trouverProfil() == "entraineur"){
+		remplirInfoUtilisateur();
+    if($_SESSION["profil"] == "entraineur"){
       header('Location: profilEntraineur.php');
     } else {
       header('Location: profilJoueur.php');
