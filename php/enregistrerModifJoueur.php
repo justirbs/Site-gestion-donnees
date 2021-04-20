@@ -59,13 +59,12 @@ session_start();
         fclose($handle);
         unlink("../csv/infoJoueurs.csv");
       }
-      // on crée un nouveau fichier csv, on y écrit toutes les nouvelles données et on le renomme comme l'ancien
-      $fp = fopen("../csv/infoJoueurs2.csv", "a+");
+      // on crée un nouveau fichier csv et on y écrit toutes les nouvelles données
+      $fp = fopen("../csv/infoJoueurs.csv", "a+");
       foreach ($donneesCsv as $joueur) {
         fputcsv($fp, $joueur, ";");
       }
       fclose($fp);
-      rename("../csv/infoJoueurs2.csv", "../csv/infoJoueurs.csv");
 
       return($tabJoueur);
     }

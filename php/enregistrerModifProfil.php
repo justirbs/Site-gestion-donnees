@@ -15,17 +15,17 @@ session_start();
 		if($_SESSION["profil"]=="joueur"){
 			echo("<div id='navbar' class='navbar'>
 				<ul>
-					<li><a href='profilJoueur.php'>Profil</a></li>
-					<li><a class='active' href='rechercherDesStatistiques.php'>Rechercher des statistiques</a></li>
+					<li><a class='active' href='profilJoueur.php'>Profil</a></li>
+					<li><a href='rechercherDesStatistiques.php'>Rechercher des statistiques</a></li>
 					<li style='float:right'><a href='./deconnexion.php?connexion=out'>Déconexion</a></li>
 				</ul>
 			</div>");
 		} else {
 			echo("<div id='navbar' class='navbar'>
 				<ul>
-					<li><a href='profilEntraineur.php'>Profil</a></li>
+					<li><a class='active' href='profilEntraineur.php'>Profil</a></li>
 					<li><a href='gererJoueurs.php'>Gérer les joueurs</a></li>
-					<li><a class='active' href='gererStatistiques.php'>Gérer les statistiques</a></li>
+					<li><a href='gererStatistiques.php'>Gérer les statistiques</a></li>
 					<li style='float:right'><a href='./deconnexion.php?connexion=out'>Déconexion</a></li>
 				</ul>
 			</div>");
@@ -73,13 +73,12 @@ session_start();
         fclose($handle);
         unlink("../csv/identifiant.csv");
       }
-      // on crée un nouveau fichier csv, on y écrit toutes les nouvelles données et on le renomme comme l'ancien
-      $fp = fopen("../csv/identifiant2.csv", "a+");
+      // on crée un nouveau fichier csv et on y écrit toutes les nouvelles données
+      $fp = fopen("../csv/identifiant.csv", "a+");
       foreach ($donneesCsv as $joueur) {
         fputcsv($fp, $joueur, ";");
       }
       fclose($fp);
-      rename("../csv/identifiant2.csv", "../csv/identifiant.csv");
 
     }
 

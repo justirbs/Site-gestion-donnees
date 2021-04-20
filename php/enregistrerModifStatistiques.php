@@ -27,7 +27,7 @@ session_start();
 
   <?php
 
-  /*Fonction pour modifier le fichier infoJoueurs.csv avec les nouvelles informations*/
+  /*Fonction pour modifier le fichier csv avec les nouvelles informations*/
   function modifierFichier(){
     $row = 1;
 

@@ -65,7 +65,6 @@ session_start();
 		echo("</table></div>");
 	}
 
-
 	//on affiche les joueurs inscrits
 	afficherTabJoueurs();
 
