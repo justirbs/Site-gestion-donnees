@@ -3,7 +3,7 @@ session_start();
 ?>
 <html>
 <head>
-	<title>Gérer statistiques</title>
+	<title>Modifier des statistiques</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="../css/designGlobal.css" />
 	<link rel="icon" type="image/png" href="../img/icon.png">
@@ -20,15 +20,20 @@ session_start();
 	</div>
 
 	<div class="titre">
-		<h1>Gérer les statistiques</h1>
+		<h1>Modifier des statistiques</h1>
 	</div>
 
-	<div class="affichage">
-		<h4>Que voulez-vous faire ?</h4>
-		<a href="ajouterStatistiques.php">Ajouter des statistiques</a><br/>
-		<a href="rechercherDesStatistiques.php">Rechercher des statistiques</a><br/>
-		<a href="modifierStatistiques.php">Modifier des statistiques</a>
-	</div>
+  <form method="post" action="entrerModifStatistiques.php" class="formulaire">
+    <h4>Choisissez le joueur dont vous voulez modifier les statistiques</h4>
+		<p>Nom : <input type="text" id="nom" name="nom"/></p>
+	  <p>Prénom : <input type="text" id="prenom" name="prenom"/></p>
+		<p><input type="submit" value="Valider" id="boutonValider" class="btn"/></p>
+	</form>
 
+  <?php
+    if(!empty($_GET)){
+      echo("<div class='affichage'><h4>Il n'existe pas de fichier à ce nom...</h4></div>");
+    }
+  ?>
 
 </body>

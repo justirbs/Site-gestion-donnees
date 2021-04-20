@@ -73,7 +73,7 @@ session_start();
 
     $tabJoueur = modifierFichier();
 
-    echo("<h4>Désormais, les données concernat le joueur sont :</h4>");
+    echo("<h4>Désormais, les données concernant le joueur sont :</h4>");
     echo("<table border=1><tr><th>Nom</th><th>Prénom</th><th>Date de naissance</th><th>Poste</th><th>Club</th></tr><tr>");
     foreach ($tabJoueur as $value) {
       echo("<td>". $value ."</td>");
