@@ -32,5 +32,4 @@ session_start();
 		<a href="modifierProfil.php">Modifier le profil</a>
 	</div>
 
-
 </body>

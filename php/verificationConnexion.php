@@ -63,7 +63,7 @@
       header('Location: profilJoueur.php');
     }
   } else {
-    header('Location: connexion.php?erreur=erreur');
+    header('Location: connexion.php?LoginError=true');
   }
 
   ?>

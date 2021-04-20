@@ -11,6 +11,7 @@ session_start();
   <?php
     if($_GET["connexion"] == "out"){
       session_destroy();
+			$_SESSION = array();
     }
     header('Location: ../index.html');
   ?>

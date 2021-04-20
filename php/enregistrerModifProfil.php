@@ -65,7 +65,7 @@ session_start();
               $_SESSION["identifiant"] = $array[0];
               $_SESSION["mdp"] = $array[1];
             }
-            array_push($donneesCsv, array($array[0], $array[1]));
+            array_push($donneesCsv, array($array[0], $array[1], $array[2]));
           }
           $row++;
         }
@@ -89,7 +89,6 @@ session_start();
 	  ?>
 		<a href="modifierProfil.php">Revenir à la page précédente</a>
 	</div>
-
 
 
 </body>

@@ -12,8 +12,9 @@
 	</div>
 
   <form id="formulaire" method="post" action="enregistrerCompte.php" class="formulaire">
-    <p>Identifiant : <input type="text" id="pseudo" name="pseudo"/></p>
-    <p>Mot de passe : <input type="password" id="mdp" name="mdp"/></p>
+    <p>Identifiant * <input type="text" id="pseudo" name="pseudo"/></p>
+    <p>Mot de passe * <input type="password" id="mdp" name="mdp"/></p>
+		<p>Choisissez votre type de profil * </p>
     <div id='listeProfils' class="liste">
       <select size='2' name='profil'>
         <option value="entraineur">Entraineur</option>
@@ -22,6 +23,23 @@
     </div>
   	<p><input type="submit" value="Valider" id="boutonValider" class="btn"/></p>
   </form>
+
+	<div class=affichage>
+		<p>(*) : champs obligatoires</p>
+	</div>
+
+	<?php
+		// s'affiche seulement si il y a eu une erreur dans le remplissage du formulaire
+		if(!empty($_GET)){
+			echo("<div class=affichage>
+				<p>Vous n'avez pas rempli tous les champs obligatoires...</p>
+			</div>");
+		}
+	?>
+
+	<div class='affichage'>
+		<a href='../index.html'>Retour à l'accueil</a>
+	</div>
 
 
 </body>

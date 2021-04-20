@@ -45,5 +45,6 @@ session_start();
 
   <div id="affichage" class="affichage"></div>
 
+
   <script type="text/javascript" src="../js/rechercherDesStatistiques.js"></script>
 </body>

@@ -32,7 +32,6 @@ session_start();
 		}
 	?>
 
-
 	<div class="titre">
 		<h1>Modifier le profil :</h1>
 	</div>
