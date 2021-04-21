@@ -12,8 +12,8 @@
 	</div>
 
   <form id="formulaire" method="post" action="verificationConnexion.php" class="formulaire">
-    <p>Identifiant : <input type="text" id="pseudo" name="pseudo"/></p>
-    <p>Mot de passe : <input type="password" id="mdp" name="mdp"/></p>
+    <p>Identifiant <input type="text" id="pseudo" name="pseudo"/></p>
+    <p>Mot de passe <input type="password" id="mdp" name="mdp"/></p>
   	<p><input type="submit" value="Valider" id="boutonValider" class="btn"/></p>
   </form>
 

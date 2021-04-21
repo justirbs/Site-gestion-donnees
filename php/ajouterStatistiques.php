@@ -25,8 +25,8 @@ session_start();
 
   <form method='post' action='enregistrerStatistiques.php' class="formulaire">
     <div id="formulaire">
-      <p>Nombre de Buts : <input type='text' name='buts'/></p>
-      <p>Temps de jeu (en min) : <input type='text' name='temps'/></p>
+      <p>Nombre de Buts <input type='text' name='buts'/></p>
+      <p>Temps de jeu (en min) <input type='text' name='temps'/></p>
     </div>
 
   <?php
@@ -63,6 +63,9 @@ session_start();
     <p><input type='submit' value='Valider' class='btn'/></p>
   </form>
 
-  <script type="text/javascript" src="js/ajouterStatistiques.js"></script>
+  <div class="affichage">
+    <a href="gererStatistiques.php">Retour à la page précédente</a>
+  </div>
+  
 </body>
 </html>

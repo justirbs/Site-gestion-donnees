@@ -29,7 +29,8 @@ session_start();
 			<li><a href="ajouterStatistiques.php">Ajouter des statistiques</a></li>
 			<li><a href="rechercherDesStatistiques.php">Rechercher des statistiques</a></li>
 			<li><a href="modifierStatistiques.php">Modifier des statistiques</a></li>
-		</ul>	
+			<li><a href="supprimerStatistiques.php">Supprimer des statistiques</a></li>
+		</ul>
 	</div>
 
 
