@@ -27,9 +27,13 @@ session_start();
 
 	<div class="affichage">
 		<h4>Que voulez-vous faire ?</h4>
-	  <a href="gererJoueurs.php">Gérer les joueurs</a><br/>
-	  <a href="gererStatistiques.php">Gérer les statistiques</a><br/>
-		<a href="modifierProfil.php">Modifier le profil</a>
+		<ul>
+			<li><a href="gererJoueurs.php">Gérer les joueurs</a></li>
+			<li><a href="gererStatistiques.php">Gérer les statistiques</a></li>
+			<li><a href="modifierProfil.php">Modifier le profil</a></li>
+		</ul>
+
+		
 	</div>
 
 </body>

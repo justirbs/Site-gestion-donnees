@@ -25,9 +25,11 @@ session_start();
 
 	<div class="affichage">
 		<h4>Que voulez-vous faire ?</h4>
-	  <a href="ajouterJoueur.php">Ajouter un joueur</a><br/>
-		<a href="modifierJoueur.php">Modifier le profil d'un joueur</a><br/>
-		<a href="supprimerJoueur.php">Supprimer un joueur</a><br/>
+		<ul>
+			<li><a href="ajouterJoueur.php">Ajouter un joueur</a></li>
+			<li><a href="modifierJoueur.php">Modifier le profil d'un joueur</a></li>
+			<li><a href="supprimerJoueur.php">Supprimer un joueur</a></li>
+		</ul>
 	</div>
 
 	<?php

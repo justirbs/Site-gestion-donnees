@@ -27,8 +27,10 @@ session_start();
 
 	<div class="affichage">
 		<h4>Que voulez-vous faire ?</h4>
-		<a href="./rechercherDesStatistiques.php">Rechercher les statistiques d'un joueur</a><br/>
-		<a href="./modifierProfil.php">Modifier le profil</a>
+		<ul>
+			<li><a href="./rechercherDesStatistiques.php">Rechercher les statistiques d'un joueur</a></li>
+			<li><a href="./modifierProfil.php">Modifier le profil</a></li>
+		</ul>		
 	</div>
 
 

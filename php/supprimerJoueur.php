@@ -62,5 +62,9 @@ session_start();
 
   </form>
 
+	<div class='affichage'>
+		<a href="./gererJoueurs.php">Retour à la page précédente</a>
+	</div>
+
 
 </body>

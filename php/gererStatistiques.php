@@ -25,9 +25,11 @@ session_start();
 
 	<div class="affichage">
 		<h4>Que voulez-vous faire ?</h4>
-		<a href="ajouterStatistiques.php">Ajouter des statistiques</a><br/>
-		<a href="rechercherDesStatistiques.php">Rechercher des statistiques</a><br/>
-		<a href="modifierStatistiques.php">Modifier des statistiques</a>
+		<ul>
+			<li><a href="ajouterStatistiques.php">Ajouter des statistiques</a></li>
+			<li><a href="rechercherDesStatistiques.php">Rechercher des statistiques</a></li>
+			<li><a href="modifierStatistiques.php">Modifier des statistiques</a></li>
+		</ul>	
 	</div>
 
 
