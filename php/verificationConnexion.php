@@ -57,11 +57,20 @@
 
   if($estCorrect == 1){
 		remplirInfoUtilisateur();
-    if($_SESSION["profil"] == "entraineur"){
-      header('Location: profilEntraineur.php');
-    } else {
-      header('Location: profilJoueur.php');
-    }
+		switch ($_SESSION["profil"]) {
+			case 'entraineur':
+				header('Location: profilEntraineur.php');
+				break;
+			case 'joueur' :
+				header('Location: profilJoueur.php');
+				break;
+			case 'admin' :
+				header('Location: profilAdmin.php');
+				break;
+			default:
+				echo("Erreur");
+				break;
+		}
   } else {
     header('Location: connexion.php?LoginError=true');
   }

@@ -16,9 +16,10 @@
     <p>Mot de passe * <input type="password" id="mdp" name="mdp"/></p>
 		<p>Choisissez votre type de profil * </p>
     <div id='listeProfils' class="liste">
-      <select size='2' name='profil'>
+      <select size='3' name='profil'>
         <option value="entraineur">Entraineur</option>
         <option value="joueur">Joueur</option>
+				<option value="admin">Administrateur</option>
       </select>
     </div>
   	<p><input type="submit" value="Valider" id="boutonValider" class="btn"/></p>
