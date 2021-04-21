@@ -31,9 +31,14 @@ session_start();
 		    fclose($fp);
 
 				echo("<div class='affichage'>
-					<h4>Le joueur a bien été insrit !</h4>
-					<a href='ajouterJoueur.php'>Revenir à la page précédente</a>
+						<h4>Le joueur a bien été insrit !</h4>
+						<table border=1><tr><th>Nom</th><th>Prénom</th><th>Date de naissance</th><th>Poste</th><th>Club</th></tr>
+							<tr><td>".$_POST["nom"]."</td><td>".$_POST["prenom"]."</td><td>".$_POST["date"]."</td><td>".$_POST["poste"]."</td><td>".$_POST["club"]."</td></tr>
+						</table>
+						<br/>
+						<a href='ajouterJoueur.php'>Revenir à la page précédente</a>
 					</div>");
+
 
 			} else {
 				// si l'utilisateur a mal rempli le formulaire on retourne sur la page en lui affichant un message d'erreur

@@ -29,12 +29,45 @@ session_start();
     <p>Prénom * <input type="text" id="prenom" name="prenom"/></p>
     <p>Date de naissance <input type="date" id="date" name="date"/></p>
     <p>Poste <input type="text" id="poste" name="poste"/></p>
-    <p>Club <input type="text" id="club" name="club"/></p>
+
+		<?php
+	  /*Fonction pour récupérer les clubs dans clubs.csv*/
+	  function construireTabClubs(){
+	    $row = 1;
+	    $tabClubs = array();
+	    if (($handle = fopen("../csv/clubs.csv", "r")) !== FALSE) {
+	      while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+	        $num = count($data);
+	        for ($c=0; $c < $num; $c++) {
+						array_push($tabClubs, $data[$c]);
+	        }
+	        $row++;
+	      }
+	      fclose($handle);
+	    }
+	    return($tabClubs);
+	  }
+
+	  $tabClubs = construireTabClubs();
+
+	  echo("
+	  <div id='listeClubs'>
+			<p>Choisissez un club :<p>
+		  <select size='5' name='club'>");
+	  foreach ($tabClubs as $club) {
+	    echo("<option value='".$club."'>".$club."</option>");
+	  }
+
+	  ?>
+	      </select>
+	    </div>
   	<p><input type="submit" value="Valider" id="boutonValider" class="btn"/></p>
   </form>
 
 	<div class=affichage>
 		<p>(*) : champs obligatoires</p>
+		<br/>
+		<a href="gererJoueurs.php">Retour à la page précédente</a>
 	</div>
 
 	<?php
