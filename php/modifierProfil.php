@@ -54,8 +54,11 @@ session_start();
   <form method='post' action='enregistrerModifProfil.php' class="formulaire">
     <h4>Veuillez entrer vos modifications</h4>
 
-    <p>Identifiant <input type="text" id="pseudo" name="pseudo"/></p>
-    <p>Mot de passe <input type="password" id="mdp" name="mdp"/></p>
+		<?php
+			echo("<p>Identifiant <input type='text' name='pseudo' value='".$_SESSION["identifiant"]."'/></p>
+		   <p>Mot de passe <input type='password' name='mdp'/></p>
+			 <p style='font-size: 12px'>Si vous ne saisissez rien dans le champ 'mot de passe', il restera inchangé</p>");
+		?>
 
     <p><input type='submit' value='Valider' class='btn'/></p>
   </form>

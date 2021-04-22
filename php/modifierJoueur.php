@@ -24,7 +24,7 @@ session_start();
 		<h1>Modifier le profil d'un joueur</h1>
 	</div>
 
-  <form method='post' action='enregistrerModifJoueur.php' class="formulaire">
+  <form method='post' action='enregistrerModifJoueur.php' class="formulaire" style="margin-top: 10px">
     <div id="blocsFormulaire">
       <h4>Veuillez sélectioner le joueur</h4>
       <div id='listeJoueurs'>
@@ -52,25 +52,31 @@ session_start();
       echo("
       <select size='5' name='joueur'>");
       foreach ($tabJoueurs as $nom => $prenom) {
-        echo("<option value='".$nom.";".$prenom."'>".$nom." ".$prenom."</option>");
+        echo("<option id='".$nom.";".$prenom."' value='".$nom.";".$prenom."' onclick='selectJoueur(this)'>".$nom." ".$prenom."</option>");
       }
       ?>
         </select>
       </div>
       <br/>
 
-      <h4>Veuillez entrer vos modifications</h4>
-      <div id="champsFormulaire">
-        <p>Nom : <input type="text" id="nom" name="nom"/></p>
-        <p>Prénom : <input type="text" id="prenom" name="prenom"/></p>
-        <p>Date de naissance : <input type="date" id="date" name="date"/></p>
-        <p>Poste : <input type="text" id="poste" name="poste"/></p>
-        <p>Club : <input type="text" id="club" name="club"/></p>
-      </div>
+      <div id="champFormulaire"></div>
 
       <p><input type='submit' value='Valider' class='btn'/></p>
     </div>
   </form>
 
+	<?php
+	// s'affiche seulement si il y a eu une erreur dans le remplissage du formulaire
+	if(!empty($_GET)){
+		echo("<div class=affichage>
+			<p>Vous n'avez pas rempli tous les champs obligatoires... Veuillez recommencer</p>
+		</div>");
+	}
+	?>
 
+	<div class="affichage" style="margin-top: 1px">
+		<a href="gererJoueurs">Retour vers la page précédente</a>
+	</div>
+
+	<script type="text/javascript" src="../js/modifierJoueur.js"></script>
 </body>
