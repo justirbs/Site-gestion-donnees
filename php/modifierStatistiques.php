@@ -23,17 +23,55 @@ session_start();
 		<h1>Modifier des statistiques</h1>
 	</div>
 
-  <form method="post" action="entrerModifStatistiques.php" class="formulaire">
-    <h4>Choisissez le joueur dont vous voulez modifier les statistiques</h4>
-		<p>Nom <input type="text" id="nom" name="nom"/></p>
-	  <p>Prénom <input type="text" id="prenom" name="prenom"/></p>
+  <form method="post" action="enregistrerModifStatistiques.php" class="formulaire" id="formulaire">
+		<h4>Voici tous les joueurs qui ont des statistiques. Choisissez le joueur dont vous voulez modifier les statistiques</h4>
+		<?php
+		/*Fonction pour récupérer les nom et prénom du joueur dans le infoJoueurs.csv*/
+		function construireTabJoueurs(){
+			$row = 1;
+			$tabJoueurs = array();
+			if (($handle = fopen("../csv/infoJoueurs.csv", "r")) !== FALSE) {
+				while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+					$num = count($data);
+					for ($c=0; $c < $num; $c++) {
+						$array = explode(";", $data[$c]);
+						if(file_exists("../csv/".$array[0].$array[1].".csv")){
+								$tabJoueurs += [$array[0] => $array[1]];
+						}
+					}
+					$row++;
+				}
+				fclose($handle);
+			}
+			return($tabJoueurs);
+		}
+
+		$tabJoueurs = construireTabJoueurs();
+
+		echo("
+		<select size='5' name='joueur'>");
+		foreach ($tabJoueurs as $nom => $prenom) {
+			echo("<option id='".$nom.";".$prenom."' value='".$nom.";".$prenom."' onclick='selectJoueur(this)'>".$nom." ".$prenom."</option>");
+		}
+		?>
+		</select>
+
+		<div id="affichage"></div>
+
 		<p><input type="submit" value="Valider" id="boutonValider" class="btn"/></p>
 	</form>
 
-  <?php
-    if(!empty($_GET)){
-      echo("<div class='affichage'><h4>Il n'existe pas de fichier à ce nom...</h4></div>");
-    }
-  ?>
+	<?php
+		if(!empty($_GET)){
+			echo("<div class='affichage'><h4>Veuillez sélectionner un joueur</h4></div>");
+		}
+	?>
 
+
+	<div class="affichage">
+		<a href="gererStatistiques">Retour à la page précédente</a>
+	</div>
+
+
+	<script type="text/javascript" src="../js/modifierStatistiques.js"></script>
 </body>

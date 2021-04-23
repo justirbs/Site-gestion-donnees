@@ -9,6 +9,7 @@ session_start();
   <link rel="icon" type="image/png" href="../img/icon.png">
 </head>
 <body>
+	
 
   <?php
     /*Fonction pour récupérer les info du joueur sélectioné*/

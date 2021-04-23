@@ -28,13 +28,13 @@ session_start();
   <?php
 
   /*Fonction pour modifier le fichier csv avec les nouvelles informations*/
-  function modifierFichier(){
+  function modifierFichier($joueur){
     $row = 1;
 
     $donneesCsv = array(); // le tableau dans le quel on va stocker toutes les donées présentes dans le csv
 
     // on ouvre le fichier csv correspondant au joueur
-    if (($handle = fopen("../csv/".$_GET["nom"].$_GET["prenom"].".csv", "r")) !== FALSE) {
+    if (($handle = fopen("../csv/".$joueur[0].$joueur[1].".csv", "r")) !== FALSE) {
       while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
         $num = count($data);
         for ($c=0; $c < $num; $c++) {
@@ -56,10 +56,10 @@ session_start();
       }
       // on ferme et on supprime l'ancien csv
       fclose($handle);
-      unlink("../csv/".$_GET["nom"].$_GET["prenom"].".csv");
+      unlink("../csv/".$joueur[0].$joueur[1].".csv");
     }
     // on crée un nouveau fichier csv, on y écrit toutes les nouvelles données
-    $fp = fopen("../csv/".$_GET["nom"].$_GET["prenom"].".csv", "a+");
+    $fp = fopen("../csv/".$joueur[0].$joueur[1].".csv", "a+");
     foreach ($donneesCsv as $ligne) {
       fputcsv($fp, $ligne, ";");
     }
@@ -69,18 +69,27 @@ session_start();
   }
 
 
-  $donneesCsv = modifierFichier();
+	// on vérifie que l'utilisateur a bien sélectionné un joueur
+	if(!empty($_GET)){
+		$joueur = explode(";", $_GET["joueur"]);
 
-  echo("<h4>Désormais, les statistiques concernant le joueur ".$_GET["nom"]." ".$_GET["prenom"]." sont :</h4>");
-  echo("<table border=1><tr><th>Nombre de buts</th><th>Temps de jeu (min)</th></tr>");
-  foreach ($donneesCsv as $ligne) {
-    echo("<tr>");
-    foreach ($ligne as $value) {
-      echo("<td>". $value ."</td>");
-    }
-    echo("</tr>");
-  }
-  echo("</table><br/>");
+		$donneesCsv = modifierFichier($joueur);
+
+	  echo("<h4>Désormais, les statistiques concernant le joueur ".$joueur[0]." ".$joueur[1]." sont :</h4>");
+	  echo("<table border=1><tr><th>Nombre de buts</th><th>Temps de jeu (min)</th></tr>");
+	  foreach ($donneesCsv as $ligne) {
+	    echo("<tr>");
+	    foreach ($ligne as $value) {
+	      echo("<td>". $value ."</td>");
+	    }
+	    echo("</tr>");
+	  }
+	  echo("</table><br/>");
+	} else {
+		// si il n'a pas sélectionné de joueur, on le redirige vers la page modifierStatistiquesavec un message d'erreur
+		header('Location: modifierStatistiques.php?FormError=true');
+	}
+
 
   ?>
 
