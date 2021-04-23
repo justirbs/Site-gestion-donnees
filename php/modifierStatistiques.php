@@ -69,7 +69,7 @@ session_start();
 
 
 	<div class="affichage">
-		<a href="gererStatistiques">Retour à la page précédente</a>
+		<a href="gererStatistiques.php">Retour à la page précédente</a>
 	</div>
 
 

@@ -23,16 +23,47 @@ session_start();
 		<h1>Supprimer des statistiques</h1>
 	</div>
 
-  <form method="post" action="entrerSuppStatistiques.php" class="formulaire">
+  <form method="post" action="entrerSuppStatistiques.php" class="formulaire" id="formulaire">
     <h4>Choisissez le joueur dont vous voulez supprimer des statistiques</h4>
-		<p>Nom <input type="text" id="nom" name="nom"/></p>
-	  <p>Prénom <input type="text" id="prenom" name="prenom"/></p>
+		<?php
+		/*Fonction pour récupérer les nom et prénom du joueur dans le infoJoueurs.csv*/
+		function construireTabJoueurs(){
+			$row = 1;
+			$tabJoueurs = array();
+			if (($handle = fopen("../csv/infoJoueurs.csv", "r")) !== FALSE) {
+				while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+					$num = count($data);
+					for ($c=0; $c < $num; $c++) {
+						$array = explode(";", $data[$c]);
+						if(file_exists("../csv/".$array[0].$array[1].".csv")){
+								$tabJoueurs += [$array[0] => $array[1]];
+						}
+					}
+					$row++;
+				}
+				fclose($handle);
+			}
+			return($tabJoueurs);
+		}
+
+		$tabJoueurs = construireTabJoueurs();
+
+		echo("
+		<select size='5' name='joueur'>");
+		foreach ($tabJoueurs as $nom => $prenom) {
+			echo("<option id='".$nom.";".$prenom."' value='".$nom.";".$prenom."' onclick='selectJoueur(this)'>".$nom." ".$prenom."</option>");
+		}
+		?>
+		</select>
+		<div id="affichage"></div>
+
 		<p><input type="submit" value="Valider" id="boutonValider" class="btn"/></p>
+
 	</form>
 
   <?php
     if(!empty($_GET)){
-      echo("<div class='affichage'><h4>Il n'existe pas de fichier à ce nom...</h4></div>");
+      echo("<div class='affichage'><h4>Veuillez sélectionner un joueur</h4></div>");
     }
   ?>
 
@@ -40,4 +71,5 @@ session_start();
     <a href="gererStatistiques.php">Retour à la page précédente</a>
   </div>
 
+	<script type="text/javascript" src="../js/supprimerStatistiques.js"></script>
 </body>
