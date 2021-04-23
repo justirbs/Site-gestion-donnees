@@ -34,36 +34,23 @@ session_start();
 
 
 		$joueur = explode(";", $_POST["joueur"]);
-
-    $nomCsv = "../csv/".$joueur[0].$joueur[1].".csv";
+  	$nomCsv = "../csv/".$joueur[0].$joueur[1].".csv";
+		$i = 1;
 
 
 		echo("<h4>Les statistiques du joueur ".$joueur[0]." ".$joueur[1]." sont les suivantes :</h4>");
 		// on construit et on affiches toutes les statistiques
 		$tabStat = construireTabStat($nomCsv);
-		$nbLigne = -1;
-		echo("<table><tr><th>Ligne</th><th>Nombre de buts</th><th>Temps de jeu (min)</th></tr>");
+		echo("<table><tr><th>Nombre de buts</th><th>Temps de jeu (min)</th></tr>");
 		foreach ($tabStat as $match) {
-			$nbLigne ++;
-			echo("<tr><td>".$nbLigne."</td>");
-			foreach ($match as $stat) {
-				echo("<td>". $stat ."</td>");
-			}
-			echo("</tr>");
+			echo("<tr>
+			<td><input type='text' name='buts".$i."' value='".$match[0]."'/></td>
+			<td><input type='text' name='temps".$i."' value='".$match[1]."'/></td>
+			</tr>");
+			$i ++;
 		}
 		echo("</table>");
 
-
-		echo("<h4>Quelle ligne voulez vous modifier ?</h4>
-			<div id='listeLignes'>
-				<select size='1' name='ligne'>");
-			for($i=0; $i<=$nbLigne; $i++){
-				echo("<option value='".$i."'>".$i."</option>");
-			}
-		echo("</select>
-			</div>
-			<p>Nombre de buts <input type='text' name='buts'/></p>
-			<p>Temps de jeu <input type='text' name='temps'/></p>");
   ?>
 
 

@@ -40,16 +40,9 @@ session_start();
         for ($c=0; $c < $num; $c++) {
           // on récupère les données de chaque ligne
           $array = explode(";", $data[$c]);
-          // si on est à la ligne à modifier
-          if($row - 1  ==  $_POST["ligne"]){
-            // on modifie les données à envoyer au nouveau fichier csv
-            if($_POST["buts"] != ""){
-              $array[0] = $_POST["buts"];
-            }
-            if($_POST["temps"] != ""){
-              $array[1] = $_POST["temps"];
-            }
-          }
+					// on modifie les données à envoyer au nouveau fichier csv
+					$array[0] = $_POST["buts".$row];
+					$array[1] = $_POST["temps".$row];
           array_push($donneesCsv, array($array[0], $array[1]));
         }
         $row++;
