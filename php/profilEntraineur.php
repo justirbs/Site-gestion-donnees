@@ -1,5 +1,9 @@
 <?php
 session_start();
+// seuls les entraineurs peuvent accéder à cette page
+if($_SESSION["profil"] != "entraineur"){
+	header('Location: ../index.html');
+}
 ?>
 <html>
 <head>
@@ -33,7 +37,7 @@ session_start();
 			<li><a href="modifierProfil.php">Modifier le profil</a></li>
 		</ul>
 
-		
+
 	</div>
 
 </body>

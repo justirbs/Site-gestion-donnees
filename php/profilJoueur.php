@@ -1,5 +1,9 @@
 <?php
 session_start();
+// seuls les joueurs peuvent accéder à cette page
+if($_SESSION["profil"] != "joueur"){
+	header('Location: ../index.html');
+}
 ?>
 <html>
 <head>
@@ -30,7 +34,7 @@ session_start();
 		<ul>
 			<li><a href="./rechercherDesStatistiques.php">Rechercher les statistiques d'un joueur</a></li>
 			<li><a href="./modifierProfil.php">Modifier le profil</a></li>
-		</ul>		
+		</ul>
 	</div>
 
 

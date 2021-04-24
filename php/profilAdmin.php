@@ -1,5 +1,9 @@
 <?php
 session_start();
+// seuls les administrateurs peuvent accéder à cette page
+if($_SESSION["profil"] != "admin"){
+	header('Location: ../index.html');
+}
 ?>
 <html>
 <head>

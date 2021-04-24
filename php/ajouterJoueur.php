@@ -1,5 +1,9 @@
 <?php
 session_start();
+// seuls les entraineurs peuvent accéder à cette page
+if($_SESSION["profil"] != "entraineur"){
+	header('Location: ../index.html');
+}
 ?>
 <html>
 <head>
@@ -52,7 +56,7 @@ session_start();
 
 	  echo("
 	  <div id='listeClubs'>
-			<p>Choisissez un club :<p>
+			<p>Choisissez un club *<p>
 		  <select size='5' name='club'>");
 	  foreach ($tabClubs as $club) {
 	    echo("<option value='".$club."'>".$club."</option>");

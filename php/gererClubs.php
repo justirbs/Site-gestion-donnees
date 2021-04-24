@@ -1,5 +1,9 @@
 <?php
 session_start();
+// seuls les administrateurs peuvent accéder à cette page
+if($_SESSION["profil"] != "admin"){
+	header('Location: ../index.html');
+}
 ?>
 <html>
 <head>
@@ -10,11 +14,7 @@ session_start();
 </head>
 <body>
 
-	<?php
-		// on vérifie que l'utilisateur est bien connecté avec un profil administrateur
-		if($_SESSION["profil"] == "admin"){
-
-			echo('<div id="navbar" class="navbar">
+			<div id="navbar" class="navbar">
 				<ul>
 				  <li><a href="profilAdmin.php">Profil</a></li>
 				  <li><a class="active" href="./gererClubs.php">Gérer les clubs</a></li>
@@ -27,7 +27,9 @@ session_start();
 			</div>
 
 			<div class="affichage">
-				<h4>Les clubs sont actuellement :</h4>');
+				<h4>Les clubs sont actuellement :</h4>
+
+			<?php
 
 		  /*Fonction pour récupérer les clubs dans clubs.csv*/
 		  function construireTabClubs(){
@@ -54,8 +56,10 @@ session_start();
 		  }
 			echo("</ul><br/>");
 
+			?>
 
-			echo('<h4>Pour modifier les clubs, vous pouvez télécharger un nouveau fichier csv contenant les noms des clubs de votre choix</h4>
+
+			<h4>Pour modifier les clubs, vous pouvez télécharger un nouveau fichier csv contenant les noms des clubs de votre choix</h4>
 				<p>/!\ Le fichier csv doit respecter un certain format : exactement 1 club sur chaque ligne ! (pas aucun et pas plusieurs)</p>
 			</div>
 
@@ -63,16 +67,8 @@ session_start();
 		    <p>Sélectionnez le fichier à charger</p>
 				<input type="file" name="fileToUpload" id="fileToUpload">
 		  	<p><input type="submit" value="Valider" class="btn" name="submit"/></p>
-		  </form>');
+		  </form>
 
-		} else {
-			//si l'utilisateur ne s'était pas connecté avec un profil admin, on lui indique et lui propose de retourner à l'accueil
-			echo("<div class='affichage'>
-				<h4>Veuillez vous connecter avec un profil administrateur pour accéder à cette page</h4>
-				<a href='../index.html'>Retour à l'acceuil</a>
-				</div>");
-		}
-	?>
 
 
 </body>

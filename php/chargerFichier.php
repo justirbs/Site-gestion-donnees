@@ -1,5 +1,9 @@
 <?php
 session_start();
+// seuls les administrateurs peuvent accéder à cette page
+if($_SESSION["profil"] != "admin"){
+	header('Location: ../index.html');
+}
 ?>
 <html>
 <head>
@@ -78,6 +82,12 @@ session_start();
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
     $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+		// on vérifie que l'utilisateur a bien chargé un fichier
+    if (basename($_FILES["fileToUpload"]["name"]) == "") {
+			echo("<h4>Vous n'avez sélectionné aucun fichier ...</h4>");
+      $uploadOk = 0;
+    }
 
     // on vérifie que le fichier n'a pas le même nom que l'ancien
     if (file_exists($target_file)) {

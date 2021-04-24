@@ -1,5 +1,9 @@
 <?php
 session_start();
+// seuls les entraineurs peuvent accéder à cette page
+if($_SESSION["profil"] != "entraineur"){
+	header('Location: ../index.html');
+}
 ?>
 <html>
 <head>
@@ -23,12 +27,13 @@ session_start();
 	  <?php
 
 			//on vérifie que l'utilisateur a bien rempli tous les champs obligatoires
-			if(($_POST["nom"] != "") && ($_POST["prenom"] != "")){
+			if(($_POST["nom"] != "") && ($_POST["prenom"] != "") && ($_POST["club"] != "")){
 
 				//on ouvre le csv et on rentre les informations à l'intérieur
 		    $fp = fopen('../csv/infoJoueurs.csv', 'a+');
 		    fputcsv($fp, $_POST,";");
 		    fclose($fp);
+
 
 				echo("<div class='affichage'>
 						<h4>Le joueur a bien été insrit !</h4>

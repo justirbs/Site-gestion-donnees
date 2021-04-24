@@ -1,5 +1,9 @@
 <?php
 session_start();
+// seuls les entraineurs et les joueurs peuvent accéder à cette page
+if($_SESSION["profil"] == "admin"){
+	header('Location: ../index.html');
+}
 ?>
 <html>
 <head>
@@ -45,9 +49,13 @@ session_start();
 
   <div id="affichage" class="affichage"></div>
 
-	<div class="affichage">
-		<a href="gererStatistiques.php">Retour à la page précédente</a>
-	</div>
+	<?php
+		if($_SESSION["profil"] == "entraineur"){
+			echo('<div class="affichage">
+				<a href="gererStatistiques.php">Retour à la page précédente</a>
+			</div>');
+		}
+	?>
 
 
   <script type="text/javascript" src="../js/rechercherDesStatistiques.js"></script>
