@@ -10,22 +10,25 @@ session_start();
 </head>
 <body>
 
-	<div id="navbar" class="navbar">
-		<ul>
-		  <li><a href="profilAdmin.php">Profil</a></li>
-		  <li><a class="active" href="./gererClubs.php">Gérer les clubs</a></li>
-		  <li style="float:right"><a href="./deconnexion.php?connexion=out">Déconexion</a></li>
-		</ul>
-	</div>
+	<?php
+		// on vérifie que l'utilisateur est bien connecté avec un profil administrateur
+		if($_SESSION["profil"] == "admin"){
 
-	<div class="titre">
-		<h1>Gérer les clubs</h1>
-	</div>
+			echo('<div id="navbar" class="navbar">
+				<ul>
+				  <li><a href="profilAdmin.php">Profil</a></li>
+				  <li><a class="active" href="./gererClubs.php">Gérer les clubs</a></li>
+				  <li style="float:right"><a href="./deconnexion.php?connexion=out">Déconexion</a></li>
+				</ul>
+			</div>
 
-	<div class="affichage">
-		<h4>Les clubs sont actuellement :</h4>
+			<div class="titre">
+				<h1>Gérer les clubs</h1>
+			</div>
 
-			<?php
+			<div class="affichage">
+				<h4>Les clubs sont actuellement :</h4>');
+
 		  /*Fonction pour récupérer les clubs dans clubs.csv*/
 		  function construireTabClubs(){
 		    $row = 1;
@@ -51,15 +54,25 @@ session_start();
 		  }
 			echo("</ul><br/>");
 
-		  ?>
-		<h4>Pour modifier les clubs, vous pouvez télécharger un nouveau fichier csv contenant les noms des clubs de votre choix</h4>
-		<p>/!\ Le fichier csv doit respecter un certain format : exactement 1 club sur chaque ligne ! (pas aucun et pas plusieurs)</p>
-	</div>
 
-	<form id="formulaire" method="post" action="chargerFichier.php" class="formulaire" enctype="multipart/form-data" style="margin-top: 15px">
-    <p>Sélectionnez le fichier à charger</p>
-		<input type="file" name="fileToUpload" id="fileToUpload">
-  	<p><input type="submit" value="Valider" class="btn" name="submit"/></p>
-  </form>
+			echo('<h4>Pour modifier les clubs, vous pouvez télécharger un nouveau fichier csv contenant les noms des clubs de votre choix</h4>
+				<p>/!\ Le fichier csv doit respecter un certain format : exactement 1 club sur chaque ligne ! (pas aucun et pas plusieurs)</p>
+			</div>
+
+			<form id="formulaire" method="post" action="chargerFichier.php" class="formulaire" enctype="multipart/form-data" style="margin-top: 15px">
+		    <p>Sélectionnez le fichier à charger</p>
+				<input type="file" name="fileToUpload" id="fileToUpload">
+		  	<p><input type="submit" value="Valider" class="btn" name="submit"/></p>
+		  </form>');
+
+		} else {
+			//si l'utilisateur ne s'était pas connecté avec un profil admin, on lui indique et lui propose de retourner à l'accueil
+			echo("<div class='affichage'>
+				<h4>Veuillez vous connecter avec un profil administrateur pour accéder à cette page</h4>
+				<a href='../index.html'>Retour à l'acceuil</a>
+				</div>");
+		}
+	?>
+
 
 </body>
