@@ -26,7 +26,7 @@ session_start();
 
   <form method='post' action='enregistrerModifJoueur.php' class="formulaire" style="margin-top: 10px">
     <div id="blocsFormulaire">
-      <h4>Veuillez sélectioner le joueur</h4>
+      <h4>Veuillez sélectioner un joueur *</h4>
       <div id='listeJoueurs'>
       <?php
       /*Fonction pour récupérer les nom et prénom du joueur dans le infoJoueurs.csv*/
@@ -63,7 +63,9 @@ session_start();
 
       <p><input type='submit' value='Valider' class='btn'/></p>
     </div>
+		<p>(*) : champs obligatoires</p>
   </form>
+
 
 	<?php
 	// s'affiche seulement si il y a eu une erreur dans le remplissage du formulaire
@@ -75,7 +77,7 @@ session_start();
 	?>
 
 	<div class="affichage" style="margin-top: 1px">
-		<a href="gererJoueurs">Retour vers la page précédente</a>
+		<a href="gererJoueurs.php">Retour vers la page précédente</a>
 	</div>
 
 	<script type="text/javascript" src="../js/modifierJoueur.js"></script>

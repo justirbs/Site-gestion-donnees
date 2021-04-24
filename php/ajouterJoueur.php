@@ -66,18 +66,17 @@ session_start();
 
 	<div class=affichage>
 		<p>(*) : champs obligatoires</p>
+		<?php
+		// s'affiche seulement si il y a eu une erreur dans le remplissage du formulaire
+		if(!empty($_GET)){
+			echo("<p>Vous n'avez pas rempli tous les champs obligatoires...</p>");
+		}
+		?>
 		<br/>
 		<a href="gererJoueurs.php">Retour à la page précédente</a>
 	</div>
 
-	<?php
-	// s'affiche seulement si il y a eu une erreur dans le remplissage du formulaire
-	if(!empty($_GET)){
-		echo("<div class=affichage>
-			<p>Vous n'avez pas rempli tous les champs obligatoires...</p>
-		</div>");
-	}
-	?>
+
 
 
 </body>

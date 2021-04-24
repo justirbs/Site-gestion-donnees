@@ -63,5 +63,27 @@ session_start();
     <p><input type='submit' value='Valider' class='btn'/></p>
   </form>
 
+	<div class='affichage'>
+	<?php
+	if(!empty($_GET)){
+		echo("<h4>Veuillez saisir un identifiant</h4>");
+	}
+	switch ($_SESSION["profil"]) {
+		case 'entraineur':
+			echo("<a href='profilEntraineur.php'>Retour à la page précédente</a>");
+			break;
+		case 'joueur' :
+			echo("<a href='profilJoueur.php'>Retour à la page précédente</a>");
+			break;
+		case 'admin' :
+			echo("<a href='profilAdmin.php'>Retour à la page précédente</a>");
+			break;
+		default:
+			echo("Erreur");
+			break;
+	}
+	?>
+</div>
+
 
 </body>

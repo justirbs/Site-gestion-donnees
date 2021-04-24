@@ -27,7 +27,7 @@ session_start();
 
 	<form method='post' action='enregistrerSuppJoueur.php' class="formulaire">
 
-		<h4>Quel joueur voulez-vous modifier ?</h4>
+		<h4>Sélectionnez un joueur *</h4>
 
     <?php
     /*Fonction pour récupérer les nom et prénom du joueur dans le infoJoueurs.csv*/
@@ -63,6 +63,13 @@ session_start();
   </form>
 
 	<div class='affichage'>
+		<p>(*) : champs obligatoires</p>
+		<?php
+		if(!empty($_GET)){
+			echo("<h4>Veuillez sélectionner un joueur</h4>");
+		}
+		?>
+		<br/>
 		<a href="./gererJoueurs.php">Retour à la page précédente</a>
 	</div>
 

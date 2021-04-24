@@ -23,7 +23,7 @@ session_start();
 		<h1>Supprimer des statistiques</h1>
 	</div>
 
-  <form method="post" action="entrerSuppStatistiques.php" class="formulaire" id="formulaire">
+  <form method="post" action="enregistrerSuppStatistiques.php" class="formulaire" id="formulaire">
     <h4>Choisissez le joueur dont vous voulez supprimer des statistiques</h4>
 		<?php
 		/*Fonction pour récupérer les nom et prénom du joueur dans le infoJoueurs.csv*/

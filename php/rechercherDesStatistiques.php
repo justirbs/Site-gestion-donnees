@@ -45,6 +45,10 @@ session_start();
 
   <div id="affichage" class="affichage"></div>
 
+	<div class="affichage">
+		<a href="gererStatistiques.php">Retour à la page précédente</a>
+	</div>
+
 
   <script type="text/javascript" src="../js/rechercherDesStatistiques.js"></script>
 </body>

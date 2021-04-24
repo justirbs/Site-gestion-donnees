@@ -58,18 +58,25 @@ session_start();
 
     }
 
-    // on modifie le fichier csv
-    modifierFichier();
+		// on vérifie que l'utilisateur a bien sélectionné un joueur
+		if($_POST["joueur"] != ""){
+			// on modifie le fichier csv
+	    modifierFichier();
 
-    $joueur = explode(";", $_POST["joueur"]);
-    $nomCsv = "../csv/".$joueur[0].$joueur[1].".csv";
+	    $joueur = explode(";", $_POST["joueur"]);
+	    $nomCsv = "../csv/".$joueur[0].$joueur[1].".csv";
 
-    //si le joueur a ses statistiques stockées dans un fichier, il faut le supprimer
-    if(file_exists($nomCsv)){
-      unlink($nomCsv);
-    }
+	    //si le joueur a ses statistiques stockées dans un fichier, il faut le supprimer
+	    if(file_exists($nomCsv)){
+	      unlink($nomCsv);
+	    }
 
-    echo("<h4>Le joueur ".$joueur[0]." ".$joueur[1]." a bien été supprimé !</h4>")
+	    echo("<h4>Le joueur ".$joueur[0]." ".$joueur[1]." a bien été supprimé !</h4>");
+
+		} else {
+			// si l'utilisateur n'a pas séléctionné de joueur, on le redirige vers supprimerJoueur avec un message d'erreur
+			header('Location: supprimerJoueur.php?FormError=true');
+		}
 
 	  ?>
 		<a href="supprimerJoueur.php">Revenir à la page précédente</a>
