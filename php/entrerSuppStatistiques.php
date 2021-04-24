@@ -38,14 +38,15 @@ session_start();
     $nomCsv = "../csv/".$joueur[0].$joueur[1].".csv";
 
 
-		echo("<h4>Les statistiques du joueur ".$joueur[0]." ".$joueur[1]." sont les suivantes :</h4>");
+		echo("<h4>Les statistiques du joueur ".$joueur[0]." ".$joueur[1]." sont les suivantes :</h4>
+			<p>Cochez pour supprimer la ligne</p>");
 		// on construit et on affiches toutes les statistiques
 		$tabStat = construireTabStat($nomCsv);
-		$nbLigne = -1;
+		$nbLigne = 0;
 		echo("<table><tr><th>Ligne</th><th>Nombre de buts</th><th>Temps de jeu (min)</th></tr>");
 		foreach ($tabStat as $match) {
 			$nbLigne ++;
-			echo("<tr><td>".$nbLigne."</td>");
+			echo("<tr><td><input type='checkbox' name='ligne".$nbLigne."'/></td>");
 			foreach ($match as $stat) {
 				echo("<td>". $stat ."</td>");
 			}
@@ -54,15 +55,6 @@ session_start();
 		echo("</table>");
 
 
-		echo("
-			<h4>Quelle ligne voulez vous supprimer ?</h4>
-			<div id='listeLignes'>
-				<select size='1' name='ligne'>");
-			for($i=0; $i<=$nbLigne; $i++){
-				echo("<option value='".$i."'>".$i."</option>");
-			}
-		echo("</select>
-			</div>");
   ?>
 
 

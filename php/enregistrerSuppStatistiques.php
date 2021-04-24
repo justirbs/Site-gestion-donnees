@@ -40,9 +40,8 @@ session_start();
         for ($c=0; $c < $num; $c++) {
           // on récupère les données de chaque ligne
           $array = explode(";", $data[$c]);
-          // si on n'est pas à la ligne à supprimer
-          if($row - 1  !=  $_POST["ligne"]){
-            // on recopie les données à envoyer au nouveau fichier csv
+          // si on n'est pas à la ligne à supprimer, on recopie les données à envoyer au nouveau fichier csv
+          if(!isset($_POST["ligne".$row ]) || ($_POST["ligne".$row ] != "on")){
             array_push($donneesCsv, array($array[0], $array[1]));
           }
         }
@@ -63,8 +62,8 @@ session_start();
   }
 
 	// on vérifie que l'utilisateur a bien sélectionné un joueur
-	if(!empty($_GET)){
-		$joueur = explode(";", $_GET["joueur"]);
+	if(!empty($_POST)){
+		$joueur = explode(";", $_POST["joueur"]);
 		$donneesCsv = modifierFichier($joueur);
 
 		if(sizeof($donneesCsv) != 0){
