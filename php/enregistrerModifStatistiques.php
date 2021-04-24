@@ -63,8 +63,8 @@ session_start();
 
 
 	// on vérifie que l'utilisateur a bien sélectionné un joueur
-	if(!empty($_GET)){
-		$joueur = explode(";", $_GET["joueur"]);
+	if(!empty($_POST)){
+		$joueur = explode(";", $_POST["joueur"]);
 
 		$donneesCsv = modifierFichier($joueur);
 

@@ -22,18 +22,25 @@ session_start();
 	<div class="affichage">
 
 	  <?php
-	  //ajout des statistiquesdans NomPrenom.csv
-	  $nomCsv = $_POST["joueur"].".csv";
-	  $fp = fopen("../csv/".$nomCsv, 'a+');
-	  $array = array($_POST["buts"], $_POST["temps"]);
-	  fputcsv($fp, $array, ";");
-	  fclose($fp);
+		// on vérifie que l'utilisateur a bien sélectionné un joueur
+		if($_POST["joueur"] != ""){
+			//ajout des statistiquesdans NomPrenom.csv
+		  $nomCsv = $_POST["joueur"].".csv";
+		  $fp = fopen("../csv/".$nomCsv, 'a+');
+		  $array = array($_POST["buts"], $_POST["temps"]);
+		  fputcsv($fp, $array, ";");
+		  fclose($fp);
 
-	  //affichage des statistiques
-	  echo("<h4>Les statistiques suivantes viennent d'être sauvegardées :</h4>");
-	  echo("<table border=1><tr><th>Joueur</th><th>Nombre de buts</th><th>Temps de jeu (min)</th></tr>");
-	  echo("<tr><td>". $_POST["joueur"] ."</td><td>". $_POST["buts"] ."</td><td>". $_POST["temps"] ."</td></tr>");
-	  echo("</table><br/>");
+		  //affichage des statistiques
+		  echo("<h4>Les statistiques suivantes viennent d'être sauvegardées :</h4>");
+		  echo("<table border=1><tr><th>Joueur</th><th>Nombre de buts</th><th>Temps de jeu (min)</th></tr>");
+		  echo("<tr><td>". $_POST["joueur"] ."</td><td>". $_POST["buts"] ."</td><td>". $_POST["temps"] ."</td></tr>");
+		  echo("</table><br/>");
+		} else {
+			// si il n'a pas sélectionné de joueur, on le redirige vers la page ajouterStatistiquesavec un message d'erreur
+			header('Location: ajouterStatistiques.php?FormError=true');
+		}
+
 
 	  ?>
 	  <a href="ajouterStatistiques.php">Revenir à la page précédente</a>

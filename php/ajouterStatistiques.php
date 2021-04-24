@@ -52,6 +52,7 @@ session_start();
 
   echo("
   <div id='listeJoueurs'>
+  <p>Sellectionnez un joueur *</p>
   <select size='5' name='joueur'>");
   foreach ($tabJoueurs as $nom => $prenom) {
     echo("<option value='".$nom.$prenom."'>".$nom." ".$prenom."</option>");
@@ -64,8 +65,16 @@ session_start();
   </form>
 
   <div class="affichage">
+
+    <?php
+    if(!empty($_GET)){
+      echo("<h4>Veuillez sélectionner un joueur</h4>");
+    }
+    ?>
+
+  	<p>(*) : champs obligatoires</p><br/>
     <a href="gererStatistiques.php">Retour à la page précédente</a>
   </div>
-  
+
 </body>
 </html>
