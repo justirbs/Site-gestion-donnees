@@ -55,12 +55,13 @@ session_start();
     <h4>Veuillez entrer vos modifications</h4>
 
 		<?php
-			echo("<p>Identifiant <input type='text' name='pseudo' value='".$_SESSION["identifiant"]."'/></p>
+			echo("<p>Identifiant * <input type='text' name='pseudo' value='".$_SESSION["identifiant"]."'/></p>
 		   <p>Mot de passe <input type='password' name='mdp'/></p>
 			 <p style='font-size: 12px'>Si vous ne saisissez rien dans le champ 'mot de passe', il restera inchangé</p>");
 		?>
 
     <p><input type='submit' value='Valider' class='btn'/></p>
+		<p>(*) : champs obligatoires</p>
   </form>
 
 	<div class='affichage'>
