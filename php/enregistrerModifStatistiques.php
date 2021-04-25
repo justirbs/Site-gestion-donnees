@@ -34,9 +34,7 @@ if($_SESSION["profil"] != "entraineur"){
   /*Fonction pour modifier le fichier csv avec les nouvelles informations*/
   function modifierFichier($joueur){
     $row = 1;
-
     $donneesCsv = array(); // le tableau dans le quel on va stocker toutes les donées présentes dans le csv
-
     // on ouvre le fichier csv correspondant au joueur
     if (($handle = fopen("../csv/".$joueur[0].$joueur[1].".csv", "r")) !== FALSE) {
       while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
@@ -61,17 +59,16 @@ if($_SESSION["profil"] != "entraineur"){
       fputcsv($fp, $ligne, ";");
     }
     fclose($fp);
-
     return($donneesCsv);
   }
 
 
 	// on vérifie que l'utilisateur a bien sélectionné un joueur
 	if(!empty($_POST)){
+
 		$joueur = explode(";", $_POST["joueur"]);
-
 		$donneesCsv = modifierFichier($joueur);
-
+		// on affiche dans un tableau, les nouvelles statistiques du joueur
 	  echo("<h4>Désormais, les statistiques concernant le joueur ".$joueur[0]." ".$joueur[1]." sont :</h4>");
 	  echo("<table border=1><tr><th>Nombre de buts</th><th>Temps de jeu (min)</th></tr>");
 	  foreach ($donneesCsv as $ligne) {

@@ -29,12 +29,12 @@ if($_SESSION["profil"] != "entraineur"){
 			//on vérifie que l'utilisateur a bien rempli tous les champs obligatoires
 			if(($_POST["nom"] != "") && ($_POST["prenom"] != "") && ($_POST["club"] != "")){
 
-				//on ouvre le csv et on rentre les informations à l'intérieur
+				//on ouvre le csv et on y rentre les informations
 		    $fp = fopen('../csv/infoJoueurs.csv', 'a+');
 		    fputcsv($fp, $_POST,";");
 		    fclose($fp);
 
-
+				// on affiche les information du nouveau joueur dans un tableau
 				echo("<div class='affichage'>
 						<h4>Le joueur a bien été insrit !</h4>
 						<table border=1><tr><th>Nom</th><th>Prénom</th><th>Date de naissance</th><th>Poste</th><th>Club</th></tr>

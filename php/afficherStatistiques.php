@@ -28,11 +28,11 @@ session_start();
 	        }
 	        $row++;
 	      }
+				// on ferme le fichier
 	      fclose($handle);
 	    }
 	    return($tabStat);
 	  }
-
 
 
 	  $nomCsv = "../csv/".$_POST["nom"].$_POST["prenom"].".csv";
@@ -40,7 +40,7 @@ session_start();
 		// on regarde si le joueur a un csv à son nom
 	  if(file_exists($nomCsv)){
 	    echo("<h4>Les statistiques du joueur ".$_POST["nom"]." ".$_POST["prenom"]." sont les suivantes :</h4>");
-			// on construit et on affiches toutes les statistiques
+			// on construit le tableau et on affiches toutes les statistiques
 			$tabStat = construireTabStat($nomCsv);
 	    echo("<table><tr><th>Nombre de buts</th><th>Temps de jeu</th></tr>");
 	    foreach ($tabStat as $match) {

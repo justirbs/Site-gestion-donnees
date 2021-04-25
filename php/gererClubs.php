@@ -34,22 +34,25 @@ if($_SESSION["profil"] != "admin"){
 		  /*Fonction pour récupérer les clubs dans clubs.csv*/
 		  function construireTabClubs(){
 		    $row = 1;
-		    $tabClubs = array();
+		    $tabClubs = array(); // le tableau dans lequel seront stockés tous les clubs
+				// on ouvre le fichier
 		    if (($handle = fopen("../csv/clubs.csv", "r")) !== FALSE) {
 		      while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 		        $num = count($data);
 		        for ($c=0; $c < $num; $c++) {
+							// pour chaque ligne on récupère le club et lon le stocke dans le tableau
 							array_push($tabClubs, $data[$c]);
 		        }
 		        $row++;
 		      }
+					// on ferme le fichier
 		      fclose($handle);
 		    }
 		    return($tabClubs);
 		  }
 
 		  $tabClubs = construireTabClubs();
-
+			// on affiche les clubs dans une liste
 		  echo("<ul>");
 		  foreach ($tabClubs as $club) {
 		    echo("<li>".$club."</li>");

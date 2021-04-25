@@ -1,3 +1,4 @@
+// Fonction pour envoyer les information en AJAX
 function rechercher(){
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {

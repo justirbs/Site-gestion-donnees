@@ -10,9 +10,11 @@ session_start();
 
   <?php
     if($_GET["connexion"] == "out"){
+			// on supprime la session de l'utilisateur
       session_destroy();
 			$_SESSION = array();
     }
+		// on redirige l'utilisateur vers l'accueil
     header('Location: ../index.html');
   ?>
 

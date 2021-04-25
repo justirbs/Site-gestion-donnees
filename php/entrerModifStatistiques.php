@@ -37,9 +37,8 @@ session_start();
   	$nomCsv = "../csv/".$joueur[0].$joueur[1].".csv";
 		$i = 1;
 
-
 		echo("<h4>Les statistiques du joueur ".$joueur[0]." ".$joueur[1]." sont les suivantes :</h4>");
-		// on construit et on affiches toutes les statistiques
+		// on construit le tableau et on affiches toutes les statistiques
 		$tabStat = construireTabStat($nomCsv);
 		echo("<table><tr><th>Nombre de buts</th><th>Temps de jeu (min)</th></tr>");
 		foreach ($tabStat as $match) {
@@ -50,7 +49,6 @@ session_start();
 			$i ++;
 		}
 		echo("</table>");
-
   ?>
 
 

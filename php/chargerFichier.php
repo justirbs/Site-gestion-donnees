@@ -32,19 +32,23 @@ if($_SESSION["profil"] != "admin"){
     /*Fonction pour récupérer les clubs dans clubs.csv*/
     function construireTabClubs(){
       $row = 1;
-      $tabClubs = array();
+      $tabClubs = array(); // tableau où seront stockés tous les clubs
+			// on ouvre le fichier
       if (($handle = fopen("../csv/clubs.csv", "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
           $num = count($data);
           for ($c=0; $c < $num; $c++) {
+						// pour chaque ligne, on stocke le club dans le tableau
             array_push($tabClubs, $data[$c]);
           }
           $row++;
         }
+				// on ferme le fichier
         fclose($handle);
       }
       return($tabClubs);
     }
+
 
     /*Fonction pour afficher le tableau avec tous les clubs*/
     function afficherTabClubs(){
@@ -57,31 +61,35 @@ if($_SESSION["profil"] != "admin"){
       echo("</ul><br/>");
     }
 
+
     /*Fonction pour vérifier que le fichier csv est au bon format*/
     function verifierBonFormat($fichier){
       $row = 1;
-      $estBonFormat = 1;
+      $estBonFormat = 1; // bouléen qui indique si le fichier est au bon format (=1) ou non (=0)
+			// on ouvre le fichier
       if (($handle = fopen($fichier, "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
           $num = count($data);
           for ($c=0; $c < $num; $c++) {
             $array = explode(";", $data[$c]);
+						// si dans une ligne, il y a plus d'un club ou que la ligne est vide, le fichier n'est pas au bon format
             if((sizeof($array) != 1) || ($array[0] == "")){
               $estBonFormat = 0;
             }
           }
           $row++;
         }
+				// on ferme le fichier
         fclose($handle);
       }
       return($estBonFormat);
     }
 
 
-    $target_dir = "../csv/";
-    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-    $uploadOk = 1;
-    $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    $target_dir = "../csv/"; // le dossier dans lequel on va charger le fichier
+    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]); // le nom du fichier
+    $uploadOk = 1; // booléen qui indique si on peut tenter le charger le fichier (=1) ou non (=0)
+    $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION)); // extension du fichier
 
 		// on vérifie que l'utilisateur a bien chargé un fichier
     if (basename($_FILES["fileToUpload"]["name"]) == "") {
@@ -91,6 +99,7 @@ if($_SESSION["profil"] != "admin"){
 
     // on vérifie que le fichier n'a pas le même nom que l'ancien
     if (file_exists($target_file)) {
+			// si c'est le cas on le renomme
       $target_file = $target_file."2";
     }
 
@@ -112,7 +121,6 @@ if($_SESSION["profil"] != "admin"){
     // si tout est bon, on charge le fichier
     } else {
       if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-
         // si le fichier a bien été chargé, on vérifie qu'il est au bon format
         if(verifierBonFormat($target_file)){
           echo("<h4>Le fichier ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " a bien été chargé !</h4>");
@@ -121,11 +129,10 @@ if($_SESSION["profil"] != "admin"){
           rename($target_file, "../csv/clubs.csv");
           afficherTabClubs();
         } else {
+					// si il n'est pas au bon format, on le supprime et on envoie un message d'erreur à l'utilisateur
           echo("<h4>Ce fichier n'est pas au bon format, il n'a pas pu être chargé...</h4>");
           unlink($target_file);
         }
-
-
       } else {
         echo("<h4>Il y a eu une erreur lors du chargement du fichier...</h4>");
       }

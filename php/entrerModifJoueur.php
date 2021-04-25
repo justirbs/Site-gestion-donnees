@@ -15,9 +15,7 @@ session_start();
     /*Fonction pour récupérer les info du joueur sélectioné*/
     function rechercherInfosJoueur(){
       $row = 1;
-
       $joueur = explode(";", $_POST["joueur"]); // on récupère le nom et le prénom du joueur pour savoir quelle ligne modifier
-
       // on ouvre le fichier csv
       if (($handle = fopen("../csv/infoJoueurs.csv", "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
@@ -37,6 +35,7 @@ session_start();
       return($tabJoueur);
     }
 
+
     /*Fonction pour récupérer les clubs dans clubs.csv*/
 	  function construireTabClubs(){
 	    $row = 1;
@@ -53,6 +52,7 @@ session_start();
 	    }
 	    return($tabClubs);
 	  }
+
 
     /*Fonction pour échanger deux cases d'un tableau*/
     function echangerCases($tabClubs, $clubJoueur){
@@ -75,10 +75,9 @@ session_start();
     $tabJoueur = rechercherInfosJoueur();
     // on récupère les choix de clubs disponibles
     $tabClubs = construireTabClubs();
-
     // on échange deux case de tabClubs pour que la liste déroulante affiche en premier le club actuel du joueur
     $tabClubs = echangerCases($tabClubs, $tabJoueur[4]);
-
+		// on affiche le formulaire pré rempli
     echo('<h4>Veuillez entrer vos modifications</h4>
     <p>Nom * <input type="text" name="nom" value="'.$tabJoueur[0].'"/></p>
     <p>Prénom * <input type="text" name="prenom" value="'.$tabJoueur[1].'"/></p>
@@ -89,7 +88,6 @@ session_start();
     foreach ($tabClubs as $club) {
 	    echo("<option value='".$club."'>".$club."</option>");
 	  }
-
   ?>
 
 </body>

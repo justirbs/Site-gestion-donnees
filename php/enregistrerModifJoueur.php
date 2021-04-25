@@ -27,14 +27,11 @@ if($_SESSION["profil"] != "entraineur"){
   <?php
 
   /*Fonction pour modifier le fichier infoJoueurs.csv avec les nouvelles informations*/
-
   function modifierFichier(){
     $row = 1;
     $i = -1;
-
     $donneesCsv = array(); // le tableau dans le quel on va stocker toutes les donées présentes dans le csv
     $joueur = explode(";", $_POST["joueur"]); // on récupère le nom et le prénom du joueur pour savoir quelle ligne modifier
-
     // on ouvre le fichier csv
     if (($handle = fopen("../csv/infoJoueurs.csv", "r")) !== FALSE) {
       while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
@@ -67,9 +64,9 @@ if($_SESSION["profil"] != "entraineur"){
       fputcsv($fp, $joueur, ";");
     }
     fclose($fp);
-
     return($tabJoueur);
   }
+
 
 	//on vérifie que l'utilisateur a bien rempli tous les champs obligatoires
 	if (($_POST["nom"] != "") && ($_POST["prenom"] != "")){

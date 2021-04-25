@@ -12,6 +12,7 @@ session_start();
 
 	<?php
 
+	// on vérifie que l'utilisateur a bien rentré un pseudo
 	if($_POST["pseudo"] != ""){
 
 		//pour la navbar on doit vérifier si on est sur un profil entraieur, joueur ou admin
@@ -49,14 +50,12 @@ session_start();
 				break;
 		}
 
-		/*Fonction pour modifier le fichier infoJoueurs.csv avec les nouvelles informations*/
 
+		/*Fonction pour modifier le fichier infoJoueurs.csv avec les nouvelles informations*/
 		function modifierFichier(){
 			$row = 1;
 			$i = 0;
-
 			$donneesCsv = array(); // le tableau dans le quel on va stocker toutes les donées présentes dans le csv
-
 			// on ouvre le fichier csv
 			if (($handle = fopen("../csv/identifiant.csv", "r")) !== FALSE) {
 				while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
@@ -91,7 +90,6 @@ session_start();
 				fputcsv($fp, $joueur, ";");
 			}
 			fclose($fp);
-
 		}
 
 

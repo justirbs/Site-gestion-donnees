@@ -50,6 +50,7 @@ if($_SESSION["profil"] == "admin"){
   <div id="affichage" class="affichage"></div>
 
 	<?php
+		// seul un entraîneur peut retourner à la page précédente 
 		if($_SESSION["profil"] == "entraineur"){
 			echo('<div class="affichage">
 				<a href="gererStatistiques.php">Retour à la page précédente</a>

@@ -28,13 +28,10 @@ if($_SESSION["profil"] != "entraineur"){
 	  <?php
 
     /*Fonction pour supprimer le joueur dans le fichier infoJoueurs.csv*/
-
     function modifierFichier(){
       $row = 1;
-
       $donneesCsv = array(); // le tableau dans le quel on va stocker toutes les donées présentes dans le csv
       $joueur = explode(";", $_POST["joueur"]); // on récupère le nom et le prénom du joueur pour savoir quelle ligne supprimer
-
       // on ouvre le fichier csv
       if (($handle = fopen("../csv/infoJoueurs.csv", "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
@@ -59,24 +56,20 @@ if($_SESSION["profil"] != "entraineur"){
         fputcsv($fp, $joueur, ";");
       }
       fclose($fp);
-
     }
 
 		// on vérifie que l'utilisateur a bien sélectionné un joueur
 		if($_POST["joueur"] != ""){
 			// on modifie le fichier csv
 	    modifierFichier();
-
+			
 	    $joueur = explode(";", $_POST["joueur"]);
 	    $nomCsv = "../csv/".$joueur[0].$joueur[1].".csv";
-
 	    //si le joueur a ses statistiques stockées dans un fichier, il faut le supprimer
 	    if(file_exists($nomCsv)){
 	      unlink($nomCsv);
 	    }
-
 	    echo("<h4>Le joueur ".$joueur[0]." ".$joueur[1]." a bien été supprimé !</h4>");
-
 		} else {
 			// si l'utilisateur n'a pas séléctionné de joueur, on le redirige vers supprimerJoueur avec un message d'erreur
 			header('Location: supprimerJoueur.php?FormError=true');

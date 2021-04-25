@@ -34,7 +34,6 @@ if($_SESSION["profil"] != "entraineur"){
 		  $array = array($_POST["buts"], $_POST["temps"]);
 		  fputcsv($fp, $array, ";");
 		  fclose($fp);
-
 		  //affichage des statistiques
 		  echo("<h4>Les statistiques suivantes viennent d'être sauvegardées :</h4>");
 		  echo("<table border=1><tr><th>Joueur</th><th>Nombre de buts</th><th>Temps de jeu (min)</th></tr>");

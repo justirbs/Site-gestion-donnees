@@ -37,10 +37,9 @@ session_start();
 		$joueur = explode(";", $_POST["joueur"]);
     $nomCsv = "../csv/".$joueur[0].$joueur[1].".csv";
 
-
 		echo("<h4>Les statistiques du joueur ".$joueur[0]." ".$joueur[1]." sont les suivantes :</h4>
 			<p>Cochez pour supprimer la ligne</p>");
-		// on construit et on affiches toutes les statistiques
+		// on construit le tableau et on affiches toutes les statistiques
 		$tabStat = construireTabStat($nomCsv);
 		$nbLigne = 0;
 		echo("<table><tr><th>Ligne</th><th>Nombre de buts</th><th>Temps de jeu (min)</th></tr>");
@@ -53,7 +52,7 @@ session_start();
 			echo("</tr>");
 		}
 		echo("</table>");
-	
+
 
 
 

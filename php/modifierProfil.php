@@ -55,6 +55,7 @@ session_start();
     <h4>Veuillez entrer vos modifications</h4>
 
 		<?php
+			// on pré-remplie le formulaire
 			echo("<p>Identifiant * <input type='text' name='pseudo' value='".$_SESSION["identifiant"]."'/></p>
 		   <p>Mot de passe <input type='password' name='mdp'/></p>
 			 <p style='font-size: 12px'>Si vous ne saisissez rien dans le champ 'mot de passe', il restera inchangé</p>");
@@ -66,9 +67,11 @@ session_start();
 
 	<div class='affichage'>
 	<?php
+	// s'affiche seulement si l'utilisateur n'a pas rentré d'identifiant
 	if(!empty($_GET)){
 		echo("<h4>Veuillez saisir un identifiant</h4>");
 	}
+	// pour retourner à la page précédente, il faut vérifier sur quel profil se trouve l'utilisateur afin de le renvoyer sur la bonne page
 	switch ($_SESSION["profil"]) {
 		case 'entraineur':
 			echo("<a href='profilEntraineur.php'>Retour à la page précédente</a>");

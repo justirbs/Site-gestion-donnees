@@ -36,23 +36,27 @@ if($_SESSION["profil"] != "entraineur"){
       /*Fonction pour récupérer les nom et prénom du joueur dans le infoJoueurs.csv*/
       function construireTabJoueurs(){
         $row = 1;
-        $tabJoueurs = array();
+        $tabJoueurs = array(); // tableau dans lequel sera stocké tous les noms et prénoms des joueurs
+				// on ouvre le fichier
         if (($handle = fopen("../csv/infoJoueurs.csv", "r")) !== FALSE) {
           while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
             $num = count($data);
             for ($c=0; $c < $num; $c++) {
+							// pour chaque ligne on récupère le nom et le prénom et on les stocke dans le tableau
               $array = explode(";", $data[$c]);
               $tabJoueurs += [$array[0] => $array[1]];
             }
             $row++;
           }
+					// on ferme le fichier
           fclose($handle);
         }
         return($tabJoueurs);
       }
 
-      $tabJoueurs = construireTabJoueurs();
 
+      $tabJoueurs = construireTabJoueurs();
+			// on affiche la liste déroulante de tous les joueurs
       echo("
       <select size='5' name='joueur'>");
       foreach ($tabJoueurs as $nom => $prenom) {

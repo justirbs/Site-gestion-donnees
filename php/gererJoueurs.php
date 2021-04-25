@@ -41,20 +41,24 @@ if($_SESSION["profil"] != "entraineur"){
 	/*Fonction pour récupérer les info dans le infoJoueurs.csv*/
 	function construireTabJoueurs(){
 		$row = 1;
-		$tabJoueurs = array();
+		$tabJoueurs = array(); // tableau dans lequel sera stocké toutes les informations des joueurs
+		// on ouvre le fichier
 		if (($handle = fopen("../csv/infoJoueurs.csv", "r")) !== FALSE) {
 			while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 				$num = count($data);
 				for ($c=0; $c < $num; $c++) {
 					$array = explode(";", $data[$c]);
+					// pour chaque ligne, on stocke les info dans le tableau
 					array_push($tabJoueurs, array($array[0], $array[1], $array[2], $array[3], $array[4]));
 				}
 				$row++;
 			}
+			// on ferme le fichier
 			fclose($handle);
 		}
 		return($tabJoueurs);
 	}
+	
 
 	/*Fonction pour afficher le tableau de tous les élèves*/
 	function afficherTabJoueurs(){
